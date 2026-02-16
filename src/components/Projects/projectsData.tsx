@@ -6,7 +6,17 @@ import mayurposhak from "../../assets/mayurposhak.png";
 import skullcandy from "../../assets/skullcandy.png";
 import doctorbooking from "../../assets/healthbuddy.png";
 
-const projectsData = [
+interface Project {
+  number: string;
+  title: string;
+  description: string | string[];
+  imageSrc: string;
+  imageAlt: string;
+  imagePosition: "left" | "right";
+  liveUrl: string;
+}
+
+const projectsData: Project[] = [
   {
     number: "01",
     title: "Mayur Poshak – Ecommerce Website",
@@ -61,22 +71,14 @@ const ProjectsSection = () => {
           </h1>
         </motion.header>
 
-        {/* Projects */}
         <div className="flex flex-col space-y-32">
-          {projectsData.map((project, index) => (
+          {projectsData.map((project) => (
             <ProjectCard
-              key={index}
-              number={project.number}
-              title={project.title}
-              description={project.description}
-              imageSrc={project.imageSrc}
-              imageAlt={project.imageAlt}
-              imagePosition={project.imagePosition}
-              liveUrl={project.liveUrl}
+              key={project.number}
+              {...project}
             />
           ))}
         </div>
-
       </div>
     </motion.section>
   );
