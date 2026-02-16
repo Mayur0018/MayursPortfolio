@@ -1,4 +1,3 @@
-import React from "react";
 import ExperienceCard from "./ExperienceCardProps";
 
 const experienceData = [

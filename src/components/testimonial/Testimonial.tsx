@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState, MouseEvent } from "react";
+import  { useRef, useState } from "react";
 import { motion } from "framer-motion";
 
 interface TooltipState {
