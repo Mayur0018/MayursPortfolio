@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import heroimg from "../../assets/heroimg.svg"
 const CharacterIllustration: React.FC = () => {

@@ -1,5 +1,3 @@
- 
-
 interface ResumeButtonProps {
   className?: string;
   onClick?: () => void;
