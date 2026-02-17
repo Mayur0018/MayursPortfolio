@@ -1,19 +1,20 @@
 "use client";
+import { useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
 import FormInput  from "./FormInput";
 import  SocialButton  from "./SocialButton";
 import ContactInfo  from "./ContactInfo";
 
 export  function ContactForm() {
-  const [formData, setFormData] = React.useState({
+  const [formData, setFormData] = useState({
     name: '',
     email: '',
     website: '',
     message: ''
   });
-  const [status, setStatus] = React.useState<"idle" | "error" | "success">("idle");
+  const [status, setStatus] = useState<"idle" | "error" | "success">("idle");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     const { name, email, message } = formData;
     if (!name || !email || !message) {

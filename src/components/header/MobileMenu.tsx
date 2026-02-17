@@ -1,18 +1,19 @@
 "use client";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
+import  { motion, AnimatePresence } from "framer-motion";
 
 interface MobileMenuProps {
   className?: string;
 }
 
 export default function MobileMenu({ className = "" }: MobileMenuProps) {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     const original = document.body.style.overflow;
     if (isOpen) {
       document.body.style.overflow = "hidden";

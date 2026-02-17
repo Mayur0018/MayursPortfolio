@@ -1,12 +1,13 @@
 import { motion } from "framer-motion";
- 
+ import { type ElementType, createElement } from "react";
+
  interface SkillCardProps {
    title: string;
   icon?: string;
    variant?: 'light' | 'dark';
   iconType?: 'svg' | 'text' | 'react';
    iconText?: string;
-  iconComponent?: React.ElementType;
+  iconComponent?: ElementType;
  }
  
  export default function SkillCard({
@@ -37,7 +38,7 @@ import { motion } from "framer-motion";
       >
       {iconType === 'react' && iconComponent ? (
         <div className="mb-5 flex items-center justify-center w-14 h-14">
-          {React.createElement(iconComponent, {
+          {createElement(iconComponent, {
             className:
               variant === 'dark'
                 ? "w-10 h-10 text-white"

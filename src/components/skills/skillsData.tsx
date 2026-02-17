@@ -1,3 +1,4 @@
+import React from "react";
 import { motion } from "framer-motion";
 import  SkillCard  from "./SkillCard";
 import { SiReact, SiNodedotjs, SiTailwindcss, SiMongodb, SiCss3, SiHtml5, SiJavascript, SiFigma, SiGit, SiNextdotjs } from "react-icons/si";

@@ -1,5 +1,5 @@
 "use client";
-import  { useRef, useState } from "react";
+import { useRef, useState, type MouseEvent } from "react";
 import { motion } from "framer-motion";
 
 interface TooltipState {
@@ -96,7 +96,7 @@ const Testimonial: React.FC = () => {
         {testimonials.map((testimonial, index) => (
           <motion.div
             key={index}
-            ref={(el) => (cardRefs.current[index] = el)}
+            ref={(el) => { cardRefs.current[index] = el; }}
             onMouseMove={(e) => handleMouseMove(e, index)}
             onMouseLeave={handleMouseLeave}
             className="relative border border-gray-200 rounded-lg overflow-hidden max-w-sm hover:shadow-lg transition-shadow duration-300"

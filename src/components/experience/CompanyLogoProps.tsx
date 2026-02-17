@@ -1,3 +1,5 @@
+import React from 'react';
+
 interface CompanyLogoProps {
   company: string;
 }
@@ -36,7 +38,7 @@ interface CompanyLogoProps {
     ),
   };
 
-  const logo = (logos as Record<string, JSX.Element>)[company];
+  const logo = (logos as Record<string, React.ReactElement>)[company];
   if (logo) return logo;
   return (
     <div className="flex justify-center items-center w-12 h-12 rounded bg-zinc-800 text-white text-sm font-bold uppercase">
