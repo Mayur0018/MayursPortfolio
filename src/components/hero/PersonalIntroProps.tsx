@@ -17,13 +17,19 @@ interface PersonalIntroProps {
   return (
     <motion.section
       className="flex-1 max-md:w-full"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
+      initial={{ opacity: 0, x: -50 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.8, ease: 'easeOut' }}
       viewport={{ once: true, amount: 0.3 }}
     >
       <header className="mb-10">
-        <p className="mb-6 text-2xl md:text-3xl lg:text-4xl leading-relaxed text-black max-w-[820px]">
+        <motion.p 
+          className="mb-6 text-4xl leading-snug text-black max-w-[820px]"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
           <span>Hello I&apos;m </span>
           <span className="font-bold">{name}</span>
           <span>. </span>
@@ -32,14 +38,27 @@ interface PersonalIntroProps {
           <span>Based in </span>
           <span className="font-bold">{location}</span>
           <span>.</span>
-        </p>
+        </motion.p>
       </header>
 
-      <p className="mb-16 text-base leading-relaxed max-w-[520px] text-stone-500">
+      <motion.p 
+        className="mb-16 text-base leading-relaxed max-w-[520px] text-stone-500"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+        viewport={{ once: true }}
+      >
         {description}
-      </p>
+      </motion.p>
 
-      <SocialIcons />
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.6 }}
+        viewport={{ once: true }}
+      >
+        <SocialIcons />
+      </motion.div>
     </motion.section>
   );
 };

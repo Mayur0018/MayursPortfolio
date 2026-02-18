@@ -45,20 +45,21 @@ export default function ProjectCard({
   return (
     <motion.article
       className="flex items-center gap-16 max-lg:flex-col"
-      initial={{ opacity: 0, x: isLeft ? -40 : 40 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
       viewport={{ once: true, amount: 0.2 }}
-      whileHover={{ scale: 1.01 }}
     >
       {/* Image */}
-      <div
+      <motion.div
         className={`flex-1 ${
           isLeft ? "order-1" : "order-2 max-lg:order-1"
         }`}
+        whileHover={{ scale: 1.02 }}
+        transition={{ duration: 0.3 }}
       >
         <ProjectImage src={imageSrc} alt={imageAlt} />
-      </div>
+      </motion.div>
 
       {/* Content */}
       <div
@@ -66,19 +67,42 @@ export default function ProjectCard({
           isLeft ? "order-2" : "order-1 max-lg:order-2"
         }`}
       >
-        <div className="text-5xl font-bold mb-6">{number}</div>
+        <motion.div 
+          className="text-4xl md:text-5xl font-bold mb-6"
+          initial={{ opacity: 0, x: isLeft ? 20 : -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          {number}
+        </motion.div>
 
-        <h2 className="text-3xl font-semibold mb-6">{title}</h2>
+        <motion.h2 
+          className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-6"
+          initial={{ opacity: 0, x: isLeft ? 20 : -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
+          {title}
+        </motion.h2>
 
-        {renderDescription()}
+        <motion.div
+          initial={{ opacity: 0, x: isLeft ? 20 : -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+        >
+          {renderDescription()}
+        </motion.div>
 
         <motion.a
           href={liveUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-12 h-12 flex items-center justify-center rounded-full border-2 border-white hover:bg-white hover:text-black transition"
-          whileHover={{ rotate: 10, scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+          className="w-12 h-12 flex items-center justify-center rounded-full border-2 border-white hover:bg-white hover:text-black transition-all duration-300"
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          whileHover={{ rotate: 45, scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
         >
           →
         </motion.a>

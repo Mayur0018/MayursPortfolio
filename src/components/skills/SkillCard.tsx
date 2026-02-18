@@ -29,13 +29,10 @@ import { motion } from "framer-motion";
   return (
     <motion.article
       className={cardClasses}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, ease: "easeOut" }}
-      viewport={{ once: true, amount: 0.2 }}
-      whileHover={{ scale: 1.03 }}
-      whileTap={{ scale: 0.98 }}
-      >
+      whileHover={{ scale: 1.05, backgroundColor: "#000", color: "#fff" }}
+      whileTap={{ scale: 0.95 }}
+      transition={{ duration: 0.2 }}
+    >
       {iconType === 'react' && iconComponent ? (
         <div className="mb-5 flex items-center justify-center w-14 h-14">
           {createElement(iconComponent, {

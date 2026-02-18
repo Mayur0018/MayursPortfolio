@@ -13,11 +13,7 @@ export default function app() {
 
   return (
     <>
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-      />
-      <div className="relative w-full bg-white min-h-screen overflow-x-hidden">
+      <div className="relative w-full bg-white min-h-screen overflow-x-hidden font-sans">
         <Background3D />
         <div className="relative z-10">
           <Header />

@@ -24,31 +24,46 @@ import { SiReact, SiNodedotjs, SiTailwindcss, SiMongodb, SiCss3, SiHtml5, SiJava
 ];
  
 export default function SkillsSection() {
-   return (
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
+  return (
     <motion.section
       id="skills"
       className="flex flex-col justify-start items-center px-5 py-20 w-full bg-white min-h-screen"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
+      initial="hidden"
+      whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
+      variants={containerVariants}
     >
       <motion.header
         className="mb-16 text-4xl font-bold text-black"
-        initial={{ y: 20, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        viewport={{ once: true }}
+        variants={itemVariants}
       >
-         <h1>
+        <h1>
           
            <div className="font-bold">My Skills</div>
          </h1>
       </motion.header>
-      <div className="grid grid-cols-5 gap-5 w-full max-w-[1200px] max-md:grid-cols-3 max-sm:grid-cols-2">
+      <motion.div 
+        className="grid grid-cols-5 gap-5 w-full max-w-[1200px] max-md:grid-cols-3 max-sm:grid-cols-2"
+        variants={containerVariants}
+      >
          {skillsData.map((skill, index) => (
+          <motion.div key={`${skill.title}-${index}`} variants={itemVariants}>
            <SkillCard
-             key={`${skill.title}-${index}`}
              title={skill.title}
             icon={""}
              variant={skill.variant}
@@ -56,8 +71,9 @@ export default function SkillsSection() {
             iconText={""}
             iconComponent={skill.iconComponent}
            />
+          </motion.div>
          ))}
-       </div>
+       </motion.div>
     </motion.section>
    );
  }

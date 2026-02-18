@@ -61,12 +61,12 @@ const ProjectsSection = () => {
       <div className="px-6 md:px-20 py-20 mx-auto max-w-7xl">
         <motion.header
           className="mb-24 text-center"
-          initial={{ opacity: 0, y: 8 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h1 className="text-5xl font-light">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-light">
             My <span className="font-bold">Projects</span>
           </h1>
         </motion.header>

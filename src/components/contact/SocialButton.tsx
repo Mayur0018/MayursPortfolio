@@ -6,10 +6,10 @@ interface SocialButtonProps {
 }
 
 export default function SocialButton({ icon, variant = 'outlined', onClick, href }: SocialButtonProps) {
-  const baseClasses = "flex gap-2 justify-center items-center px-4 w-14 h-14 rounded min-h-14 transition-colors";
+  const baseClasses = "flex gap-2 justify-center items-center px-4 w-14 h-14 rounded min-h-14 transition-all duration-300 hover:scale-110 active:scale-95";
   const variantClasses = variant === 'filled'
-    ? "bg-black hover:bg-gray-800"
-    : "border-2 border-black border-solid hover:bg-gray-50";
+    ? "bg-black hover:bg-neutral-800 text-white shadow-sm hover:shadow-md"
+    : "border-2 border-black border-solid hover:bg-neutral-50";
 
   if (href) {
     return (

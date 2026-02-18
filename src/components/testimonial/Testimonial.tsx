@@ -75,68 +75,93 @@ const Testimonial: React.FC = () => {
     }));
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  };
+
   return (
-    <>
-      <motion.h1
-        className="text-center text-4xl font-bold text-gray-900 py-10"
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4 }}
-        viewport={{ once: true }}
+    <motion.section 
+      id="testimonials"
+      className="bg-white py-20"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.1 }}
+      variants={containerVariants}
+    >
+      <motion.h2
+        className="text-center text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4"
+        variants={itemVariants}
       >
        My Testimonials
-      </motion.h1>
+      </motion.h2>
 
-      <p className="text-center text-gray-500 mt-1">
+      <motion.p 
+        className="text-center text-gray-500 max-w-2xl mx-auto px-4 text-base md:text-lg"
+        variants={itemVariants}
+      >
         We have collected some testimonials from our users. They are real people
         who have used our product.
-      </p>
+      </motion.p>
 
-      <div className="flex flex-wrap items-center justify-center gap-6 py-16">
+      <motion.div 
+        className="flex flex-wrap items-center justify-center gap-8 py-16 px-4"
+        variants={containerVariants}
+      >
         {testimonials.map((testimonial, index) => (
           <motion.div
             key={index}
             ref={(el) => { cardRefs.current[index] = el; }}
             onMouseMove={(e) => handleMouseMove(e, index)}
             onMouseLeave={handleMouseLeave}
-            className="relative border border-gray-200 rounded-lg overflow-hidden max-w-sm hover:shadow-lg transition-shadow duration-300"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: index * 0.05 }}
-            viewport={{ once: true, amount: 0.2 }}
+            className="relative border-2 border-gray-100 rounded-2xl overflow-hidden max-w-sm hover:border-black transition-colors duration-300 bg-white shadow-sm hover:shadow-xl p-8"
+            variants={itemVariants}
+            whileHover={{ y: -10 }}
           >
             {tooltip.visible && tooltip.text === testimonial.name && (
               <span
-                className="absolute px-2.5 py-1 text-sm rounded bg-indigo-500 text-white pointer-events-none transition-all duration-300"
+                className="absolute px-2.5 py-1 text-sm rounded bg-black text-white pointer-events-none transition-all duration-300 z-10"
                 style={{
-                  top: tooltip.y + 8,
-                  left: tooltip.x + 8,
+                  top: tooltip.y + 15,
+                  left: tooltip.x + 15,
                 }}
               >
                 {tooltip.text}
               </span>
             )}
 
-            <div className="flex flex-col items-center justify-center p-8 text-center">
-              <div className="mb-4 text-gray-500">
-                <h3 className="text-lg font-semibold text-gray-900">
+            <div className="flex flex-col items-center justify-center text-center h-full">
+              <div className="mb-6">
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
                   Very easy to integrate
                 </h3>
-                <p className="my-4 text-sm line-clamp-3">
-                  {testimonial.message}
+                <p className="text-gray-600 leading-relaxed italic">
+                  &quot;{testimonial.message}&quot;
                 </p>
               </div>
 
-              <div className="flex items-center justify-center">
-                <img
-                  className="rounded-full w-9 h-9 object-cover"
-                  src={testimonial.image}
-                  alt={`${testimonial.name} profile`}
-                  loading="lazy"
-                />
-                <div className="space-y-0.5 font-medium text-left ml-3">
-                  <p>{testimonial.name}</p>
-                  <p className="text-sm text-gray-500">
+              <div className="flex items-center justify-center mt-auto">
+                <div className="relative">
+                  <img
+                    className="rounded-full w-12 h-12 object-cover border-2 border-gray-100"
+                    src={testimonial.image}
+                    alt={`${testimonial.name} profile`}
+                    loading="lazy"
+                  />
+                </div>
+                <div className="space-y-0.5 font-medium text-left ml-4">
+                  <p className="text-gray-900 font-bold">{testimonial.name}</p>
+                  <p className="text-xs md:text-sm text-gray-500 uppercase tracking-wider">
                     {testimonial.title}
                   </p>
                 </div>
@@ -144,8 +169,8 @@ const Testimonial: React.FC = () => {
             </div>
           </motion.div>
         ))}
-      </div>
-    </>
+      </motion.div>
+    </motion.section>
   );
 };
 

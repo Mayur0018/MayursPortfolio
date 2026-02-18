@@ -1,22 +1,20 @@
+import { motion } from "framer-motion";
+
 export default function ContactInfo() {
   return (
-    <section className="flex overflow-hidden flex-col flex-1 shrink justify-center py-5 basis-0 min-w-60 max-md:max-w-full">
+    <motion.section 
+      className="flex overflow-hidden flex-col flex-1 shrink justify-center py-5 basis-0 min-w-60 max-md:max-w-full"
+      initial={{ opacity: 0, x: 20 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.6, delay: 0.2 }}
+      viewport={{ once: true }}
+    >
       <div className="flex flex-col flex-1 justify-center w-full max-md:max-w-full">
         <div className="w-full max-md:max-w-full">
-          <header className="w-full text-5xl font-extrabold tracking-tighter leading-none max-md:max-w-full max-md:text-4xl">
-            <div className="flex flex-wrap gap-4 items-start w-full whitespace-nowrap max-md:max-w-full max-md:text-4xl">
-              <h1 className="text-black max-md:text-4xl">
-                Let's
-              </h1>
-              <span className="border-black border-solid border-[3px] max-md:text-4xl px-2">
-                talk
-              </span>
-              <span className="text-black max-md:text-4xl">
-                for
-              </span>
-            </div>
-            <h2 className="mt-3 text-black max-md:max-w-full max-md:text-4xl">
-              Something special
+          <header className="w-full text-black max-md:max-w-full">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter leading-tight max-md:max-w-full">
+              Let&apos;s talk for <br />
+              <span className="font-extrabold">Something special</span>
             </h2>
           </header>
           <p className="mt-5 text-base tracking-wide leading-6 text-zinc-500 max-md:max-w-full">
@@ -24,15 +22,23 @@ export default function ContactInfo() {
             user-friendly, and memorable interactive experiences.
           </p>
         </div>
-        <address className="mt-10 w-full text-3xl font-semibold tracking-tight leading-none text-black whitespace-nowrap max-md:max-w-full not-italic">
-          <a href="mailto:youremail@gmail.com" className="text-black max-md:max-w-full hover:underline">
-            youremail@gmail.com
-          </a>
-          <a href="tel:1234567890" className="mt-4 block text-black max-md:max-w-full hover:underline">
-            1234567890
-          </a>
+        <address className="mt-10 w-full text-2xl md:text-3xl font-semibold tracking-tight leading-none text-black whitespace-nowrap max-md:max-w-full not-italic">
+          <motion.a 
+            href="mailto:mayurnish18@gmail.com" 
+            className="text-black max-md:max-w-full hover:underline hover:text-gray-700 transition-colors block mb-4"
+            whileHover={{ x: 5 }}
+          >
+            mayurnish18@gmail.com
+          </motion.a>
+          <motion.a 
+            href="tel:9106481092" 
+            className="block text-black max-md:max-w-full hover:underline hover:text-gray-700 transition-colors"
+            whileHover={{ x: 5 }}
+          >
+            9106481092
+          </motion.a>
         </address>
       </div>
-    </section>
+    </motion.section>
   );
 }
